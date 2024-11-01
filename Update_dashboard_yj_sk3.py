@@ -169,8 +169,6 @@ location_dict = {
 # 전체 주민등록인구수(api)
 def population_all(resident_df, selected_category, start_date, end_date, location_dict):
     if selected_category == '전체(지역 선택 안함)':
-        start_date = pd.to_datetime(start_date).strftime('%Y-%m')
-        end_date = pd.to_datetime(end_date).strftime('%Y-%m')
         resident_df['PRD_DE'] = pd.to_datetime(resident_df['PRD_DE'], format='%Y%m')
         resident_population = resident_df[(resident_df['PRD_DE'] >= start_date) & (resident_df['PRD_DE'] <= end_date)]
         resident_population = resident_population[resident_population['TYPE'].isin(location_dict.values())]
@@ -183,8 +181,6 @@ def population_all(resident_df, selected_category, start_date, end_date, locatio
 # 세부 지역 주민등록인구수(api)
 def population(resident_df, selected_category, start_date, end_date, location_dict):
     if selected_category != '선택해주세요' and selected_category != '전체(지역 선택 안함)':
-        start_date = pd.to_datetime(start_date).strftime('%Y-%m')
-        end_date = pd.to_datetime(end_date).strftime('%Y-%m')
         selected_location = location_dict.get(selected_category)
         resident_df_final = resident_df[resident_df['TYPE'] == selected_location].copy()
         resident_df_final['TYPE'] = selected_category
