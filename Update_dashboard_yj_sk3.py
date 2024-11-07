@@ -147,7 +147,7 @@ ara='1120066000+1144069000+2635051000+4111574000+4713057000'
 
 url = f'https://kosis.kr/openapi/Param/statisticsParameterData.do?method=getList&apiKey=MzI2MTk5ZTM3ZDEyZWVmMjNjYjBjOTVjY2EwNzVlMTA=&itmId=T2+&objL1=1120066000+1144069000+2635051000+4111574000+4713057000+&objL2=0+&objL3=&objL4=&objL5=&objL6=&objL7=&objL8=&format=json&jsonVD=Y&prdSe=M&startPrdDe=202405&endPrdDe=202409&orgId=101&tblId=DT_1B04005N'
 
-response = requests.get(url, timeout=30)
+response = requests.get(url, timeout=50)
 
 if response.status_code == 200:
     resident_data = response.json()
